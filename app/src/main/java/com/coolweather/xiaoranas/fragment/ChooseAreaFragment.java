@@ -1,4 +1,4 @@
-package com.coolweather.android.fragment;
+package com.coolweather.xiaoranas.fragment;
 
 import android.app.Fragment;
 import android.app.ProgressDialog;
@@ -15,14 +15,15 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.coolweather.android.Activity.DataListActivity;
-import com.coolweather.android.Activity.WeatherActivity;
+import com.coolweather.xiaoranas.Activity.DataListActivity;
+import com.coolweather.xiaoranas.Activity.SettingActivity;
+import com.coolweather.xiaoranas.Activity.WeatherActivity;
 import com.coolweather.android.R;
-import com.coolweather.android.db.City;
-import com.coolweather.android.db.County;
-import com.coolweather.android.db.Province;
-import com.coolweather.android.utils.HttpUtil;
-import com.coolweather.android.utils.Utility;
+import com.coolweather.xiaoranas.db.City;
+import com.coolweather.xiaoranas.db.County;
+import com.coolweather.xiaoranas.db.Province;
+import com.coolweather.xiaoranas.utils.HttpUtil;
+import com.coolweather.xiaoranas.utils.Utility;
 
 import org.litepal.crud.DataSupport;
 
@@ -45,6 +46,7 @@ public class ChooseAreaFragment extends Fragment {
     private ProgressDialog progressDialog;
     private TextView titleText;
     private Button backButton;
+    private TextView settingText;
     private ListView listView;
     private ArrayAdapter<String> adapter;
     private List<String> dataList = new ArrayList<>();
@@ -80,9 +82,13 @@ public class ChooseAreaFragment extends Fragment {
         View view = inflater.inflate(R.layout.choose_area,container,false);
         titleText = (TextView) view.findViewById(R.id.title_text);
         backButton = (Button) view.findViewById(R.id.back_button);
+        settingText = (TextView) view.findViewById(R.id.setting_textview);
         listView = (ListView) view.findViewById(R.id.list_view);
         adapter = new ArrayAdapter<>(getActivity(),android.R.layout.simple_list_item_1,dataList);
         listView.setAdapter(adapter);
+        if (getActivity() instanceof WeatherActivity){
+            settingText.setVisibility(View.VISIBLE);
+        }
         return view;
     }
 
@@ -126,8 +132,16 @@ public class ChooseAreaFragment extends Fragment {
                 }
             }
         });
+        settingText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), SettingActivity.class);
+                startActivity(intent);
+            }
+        });
         queryProvinces();
     }
+
 
     /**
      * 查询全国所有的省，有则从数据库查询，如果没有查询到再去服务器上查询

@@ -1,4 +1,4 @@
-package com.coolweather.android.Activity;
+package com.coolweather.xiaoranas.Activity;
 
 import android.content.Intent;
 import android.content.SharedPreferences;

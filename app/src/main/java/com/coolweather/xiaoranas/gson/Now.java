@@ -1,4 +1,4 @@
-package com.coolweather.android.gson;
+package com.coolweather.xiaoranas.gson;
 
 import com.google.gson.annotations.SerializedName;
 
@@ -6,22 +6,15 @@ import com.google.gson.annotations.SerializedName;
  * Created by Administrator on 2017/2/22.
  */
 
-public class Forecast {
-    public String date;
-
+public class Now {
     @SerializedName("tmp")
-    public Temperature temperature;
+    public String temperature;
 
     @SerializedName("cond")
     public More more;
 
-    public class Temperature{
-        public String max;
-        public String min;
-    }
-
     public class More{
-        @SerializedName("txt_d")
+        @SerializedName("txt")
         public String info;
     }
 }

@@ -1,4 +1,4 @@
-package com.coolweather.android.gson;
+package com.coolweather.xiaoranas.gson;
 
 /**
  * Created by Administrator on 2017/2/22.

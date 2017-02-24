@@ -1,4 +1,4 @@
-package com.coolweather.android.service;
+package com.coolweather.xiaoranas.service;
 
 import android.app.AlarmManager;
 import android.app.PendingIntent;
@@ -10,9 +10,9 @@ import android.os.SystemClock;
 import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
 
-import com.coolweather.android.gson.Weather;
-import com.coolweather.android.utils.HttpUtil;
-import com.coolweather.android.utils.Utility;
+import com.coolweather.xiaoranas.gson.Weather;
+import com.coolweather.xiaoranas.utils.HttpUtil;
+import com.coolweather.xiaoranas.utils.Utility;
 
 import java.io.IOException;
 
@@ -25,6 +25,9 @@ import okhttp3.Response;
  */
 
 public class AutoUpdataService extends Service {
+
+    public final static String ServiceUrl = "AutoUpdataService";
+
     @Nullable
     @Override
     public IBinder onBind(Intent intent) {
@@ -57,7 +60,7 @@ public class AutoUpdataService extends Service {
             String weatherId = weather.basic.weather;
             String weatherUrl = "http://guolin.tech/api/weather?cityid=" +
                   weatherId + "&key=07857103892146f29c3f891d253914e2";
-            HttpUtil.sendOkHttpRequest(weatherId, new Callback() {
+            HttpUtil.sendOkHttpRequest(weatherUrl, new Callback() {
                 @Override
                 public void onFailure(Call call, IOException e) {
                     e.printStackTrace();

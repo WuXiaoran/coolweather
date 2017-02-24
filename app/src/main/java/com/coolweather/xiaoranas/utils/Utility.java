@@ -1,11 +1,11 @@
-package com.coolweather.android.utils;
+package com.coolweather.xiaoranas.utils;
 
 import android.text.TextUtils;
 
-import com.coolweather.android.db.City;
-import com.coolweather.android.db.County;
-import com.coolweather.android.db.Province;
-import com.coolweather.android.gson.Weather;
+import com.coolweather.xiaoranas.db.City;
+import com.coolweather.xiaoranas.db.County;
+import com.coolweather.xiaoranas.db.Province;
+import com.coolweather.xiaoranas.gson.Weather;
 import com.google.gson.Gson;
 
 import org.json.JSONArray;

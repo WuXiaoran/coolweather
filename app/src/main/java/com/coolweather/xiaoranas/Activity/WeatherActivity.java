@@ -1,5 +1,6 @@
-package com.coolweather.android.Activity;
+package com.coolweather.xiaoranas.Activity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
@@ -23,11 +24,11 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.coolweather.android.R;
-import com.coolweather.android.gson.Forecast;
-import com.coolweather.android.gson.Weather;
-import com.coolweather.android.service.AutoUpdataService;
-import com.coolweather.android.utils.HttpUtil;
-import com.coolweather.android.utils.Utility;
+import com.coolweather.xiaoranas.gson.Forecast;
+import com.coolweather.xiaoranas.gson.Weather;
+import com.coolweather.xiaoranas.service.AutoUpdataService;
+import com.coolweather.xiaoranas.utils.HttpUtil;
+import com.coolweather.xiaoranas.utils.Utility;
 
 import java.io.IOException;
 
@@ -45,7 +46,7 @@ public class WeatherActivity extends AppCompatActivity {
     private Button navButton;
     public SwipeRefreshLayout swipeRefreshLayout;
     private ScrollView weatherLayout;
-    private TextView titleCity;
+    private TextView titleTheme;
     private TextView titleUpdateTime;
     private TextView degreeText;
     private TextView weatherInfoText;
@@ -70,7 +71,7 @@ public class WeatherActivity extends AppCompatActivity {
         //初始化各控件
         bingPicImg = (ImageView) findViewById(R.id.bing_pic_img);
         weatherLayout = (ScrollView) findViewById(R.id.weather_layout);
-        titleCity = (TextView) findViewById(R.id.title_city);
+        titleTheme = (TextView) findViewById(R.id.title_theme);
         titleUpdateTime = (TextView) findViewById(R.id.title_update_time);
         degreeText = (TextView) findViewById(R.id.degree_text);
         weatherInfoText = (TextView) findViewById(R.id.weather_info_text);
@@ -188,7 +189,8 @@ public class WeatherActivity extends AppCompatActivity {
                             editor.apply();
                             showWeatherInfo(weather);
                             Intent intent = new Intent(WeatherActivity.this, AutoUpdataService.class);
-                            startActivity(intent);
+                            intent.setFlags(Context.BIND_AUTO_CREATE);
+                            startService(intent);
                         }else{
                             Toast.makeText(WeatherActivity.this,"获取天气信息失败",
                                     Toast.LENGTH_SHORT).show();
@@ -209,7 +211,7 @@ public class WeatherActivity extends AppCompatActivity {
         String updateTime = weather.basic.update.updateTime.split(" ")[1];
         String degree = weather.now.temperature + "℃";
         String weatherInfo = weather.now.more.info;
-        titleCity.setText(cityName);
+        titleTheme.setText(cityName);
         titleUpdateTime.setText(updateTime);
         degreeText.setText(degree);
         weatherInfoText.setText(weatherInfo);

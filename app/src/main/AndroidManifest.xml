@@ -7,18 +7,23 @@
     <application
         android:name="org.litepal.LitePalApplication"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/weather"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Activity.DataListActivity">
+        <activity android:name="com.coolweather.xiaoranas.Activity.DataListActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Activity.WeatherActivity"/>
+        <activity android:name="com.coolweather.xiaoranas.Activity.WeatherActivity"/>
+        <activity android:name="com.coolweather.xiaoranas.Activity.SettingActivity"/>
+
+        <service android:name="com.coolweather.xiaoranas.service.AutoUpdataService"
+            android:enabled="true"
+            android:exported="true"/>
     </application>
 
 </manifest>

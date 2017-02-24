@@ -1,4 +1,4 @@
-package com.coolweather.android.db;
+package com.coolweather.xiaoranas.db;
 
 import org.litepal.crud.DataSupport;
 
