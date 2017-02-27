@@ -1,4 +1,4 @@
-package com.coolweather.xiaoranas.Activity;
+package com.coolweather.xiaoranas.activity;
 
 import android.app.ActivityManager;
 import android.content.Context;
@@ -15,7 +15,7 @@ import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.coolweather.android.R;
+import com.coolweather.xiaoranas.R;
 import com.coolweather.xiaoranas.service.AutoUpdataService;
 
 import java.util.List;

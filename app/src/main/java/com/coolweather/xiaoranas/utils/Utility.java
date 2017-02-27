@@ -5,6 +5,8 @@ import android.text.TextUtils;
 import com.coolweather.xiaoranas.db.City;
 import com.coolweather.xiaoranas.db.County;
 import com.coolweather.xiaoranas.db.Province;
+import com.coolweather.xiaoranas.gson.Get_NEWS;
+import com.coolweather.xiaoranas.gson.Single_NEWS;
 import com.coolweather.xiaoranas.gson.Weather;
 import com.google.gson.Gson;
 
@@ -97,4 +99,22 @@ public class Utility {
         }
         return null;
     }
+
+    /**
+     * 单条资讯信息
+     * 资讯信息由 http://showdoc.dagoogle.cn/index.php/6 免费提供
+     */
+    public static Single_NEWS handleSingleNEWSResponse(String response){
+        Single_NEWS singleNewsData = new Gson().fromJson(response,Single_NEWS.class);
+        return singleNewsData;
+    }
+    /**
+     * 多条资讯信息
+     * 资讯信息由 http://showdoc.dagoogle.cn/index.php/6 免费提供
+     */
+    public static Get_NEWS handleGetNEWSResponse(String response){
+        Get_NEWS getNews = new Gson().fromJson(response,Get_NEWS.class);
+        return getNews;
+    }
+
 }

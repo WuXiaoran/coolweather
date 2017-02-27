@@ -15,10 +15,10 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.coolweather.xiaoranas.Activity.DataListActivity;
-import com.coolweather.xiaoranas.Activity.SettingActivity;
-import com.coolweather.xiaoranas.Activity.WeatherActivity;
-import com.coolweather.android.R;
+import com.coolweather.xiaoranas.activity.DataListActivity;
+import com.coolweather.xiaoranas.activity.SettingActivity;
+import com.coolweather.xiaoranas.activity.WeatherActivity;
+import com.coolweather.xiaoranas.R;
 import com.coolweather.xiaoranas.db.City;
 import com.coolweather.xiaoranas.db.County;
 import com.coolweather.xiaoranas.db.Province;
@@ -50,6 +50,7 @@ public class ChooseAreaFragment extends Fragment {
     private ListView listView;
     private ArrayAdapter<String> adapter;
     private List<String> dataList = new ArrayList<>();
+    private WeatherActivity activity;
 
     /**
      * 省列表
@@ -112,7 +113,7 @@ public class ChooseAreaFragment extends Fragment {
                         startActivity(intent);
                         getActivity().finish();
                     }else if (getActivity() instanceof WeatherActivity){
-                        WeatherActivity activity = (WeatherActivity) getActivity();
+                        activity = (WeatherActivity) getActivity();
                         activity.drawerLayout.closeDrawers();
                         activity.swipeRefreshLayout.setRefreshing(true);
                         activity.requestWeather(weatherId);

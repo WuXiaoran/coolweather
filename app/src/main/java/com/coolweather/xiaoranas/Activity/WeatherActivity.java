@@ -1,4 +1,4 @@
-package com.coolweather.xiaoranas.Activity;
+package com.coolweather.xiaoranas.activity;
 
 import android.content.Context;
 import android.content.Intent;
@@ -23,7 +23,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
-import com.coolweather.android.R;
+import com.coolweather.xiaoranas.R;
 import com.coolweather.xiaoranas.gson.Forecast;
 import com.coolweather.xiaoranas.gson.Weather;
 import com.coolweather.xiaoranas.service.AutoUpdataService;
@@ -241,4 +241,5 @@ public class WeatherActivity extends AppCompatActivity {
         sportText.setText(sport);
         weatherLayout.setVisibility(View.VISIBLE);
     }
+
 }

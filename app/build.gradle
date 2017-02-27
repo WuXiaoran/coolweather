@@ -33,5 +33,6 @@ dependencies {
     compile 'com.android.support:design:24.2.1'
     compile 'de.hdodenhof:circleimageview:2.1.0'
     compile 'com.android.support:recyclerview-v7:24.2.1'
+    compile 'io.github.yavski:fab-speed-dial:1.0.6'
     testCompile 'junit:junit:4.12'
 }

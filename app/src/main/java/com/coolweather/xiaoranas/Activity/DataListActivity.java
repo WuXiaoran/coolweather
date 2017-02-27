@@ -1,4 +1,4 @@
-package com.coolweather.xiaoranas.Activity;
+package com.coolweather.xiaoranas.activity;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 
-import com.coolweather.android.R;
+import com.coolweather.xiaoranas.R;
 
 public class DataListActivity extends AppCompatActivity {
 
