@@ -8,15 +8,24 @@ public class InfoListData {
     private String title;
     private String top_image;
     private String source;
-    private String reply_count;
     private String edit_time;
+    private String image_1;
+    private String image_2;
 
-    public InfoListData(String title, String top_image, String source, String reply_count, String edit_time) {
+    public InfoListData(String title, String top_image, String source, String edit_time) {
         this.title = title;
         this.top_image = top_image;
         this.source = source;
-        this.reply_count = reply_count;
         this.edit_time = edit_time;
+    }
+
+    public InfoListData(String title, String top_image, String source, String edit_time,String image_1,String image_2) {
+        this.title = title;
+        this.image_1 = image_1;
+        this.edit_time = edit_time;
+        this.image_2 = image_2;
+        this.top_image = top_image;
+        this.source = source;
     }
 
     public String getTitle() {
@@ -51,11 +60,19 @@ public class InfoListData {
         this.edit_time = edit_time;
     }
 
-    public String getReply_count() {
-        return reply_count;
+    public String getImage_1() {
+        return image_1;
     }
 
-    public void setReply_count(String reply_count) {
-        this.reply_count = reply_count;
+    public void setImage_1(String image_1) {
+        this.image_1 = image_1;
+    }
+
+    public String getImage_2() {
+        return image_2;
+    }
+
+    public void setImage_2(String image_2) {
+        this.image_2 = image_2;
     }
 }

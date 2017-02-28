@@ -5,4 +5,6 @@
     <color name="colorAccent">#FF4081</color>
     <color name="title_color">#0b3dd0</color>
     <color name="view">#bdbdbd</color>
+    <color name="state_pressed">#bdbdbd</color>
+    <color name="false_state_pressed">#FFFFFF</color>
 </resources>
