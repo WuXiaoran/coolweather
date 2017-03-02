@@ -7,5 +7,8 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
+    <!-- 新闻详情 -->
+    <style name="NewTheme" parent="AppTheme">
+    </style>
 
 </resources>

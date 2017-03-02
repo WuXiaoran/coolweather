@@ -22,6 +22,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".activity.DetailsNewActivity"></activity>
+        <activity android:name=".activity.ImageListActivity"/>
 
         <service android:name="com.coolweather.xiaoranas.service.AutoUpdataService"
             android:enabled="true"

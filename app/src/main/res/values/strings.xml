@@ -13,6 +13,16 @@
         <item>财经</item>
         <item>时尚</item>
     </string-array>
+    <string-array name="tabarray_foots">
+        <item>资讯</item>
+        <item>天气</item>
+        <item>我的</item>
+    </string-array>
+    <string-array name="tabarray_foots_icon">
+        <item>tab_new</item>
+        <item>tab_weather</item>
+        <item>tab_myself</item>
+    </string-array>
     <string-array name="tabarraykey">
         <item>top</item>
         <item>shehui</item>
@@ -24,5 +34,21 @@
         <item>keji</item>
         <item>caijing</item>
         <item>shishang</item>
+    </string-array>
+    <string-array name="adBlockUrl">
+        <item>ubmcmm.baidustatic.com</item>
+        <item>cpro2.baidustatic.com</item>
+        <item>cpro.baidustatic.com</item>
+        <item>s.lianmeng.360.cn</item>
+        <item>nsclick.baidu.com</item>
+        <item>ot.dftoutiao.com</item>
+        <item>pos.baidu.com</item>
+        <item>cbjs.baidu.com</item>
+        <item>cpro.baidu.com</item>
+        <item>images.sohu.com/cs/jsfile/js/c.js</item>
+        <item>union.sogou.com/</item>
+        <item>sogou.com/</item>
+        <item>a.baidu.com</item>
+        <item>c.baidu.com</item>
     </string-array>
 </resources>

@@ -1,6 +1,7 @@
 package com.coolweather.xiaoranas.fragment;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -14,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.coolweather.xiaoranas.R;
+import com.coolweather.xiaoranas.activity.DetailsNewActivity;
 import com.coolweather.xiaoranas.adapter.InfoDataAdapter;
 import com.coolweather.xiaoranas.entity.InfoListData;
 import com.coolweather.xiaoranas.gson.News;
@@ -39,10 +41,13 @@ import okhttp3.Response;
 
 public class InfoTabFragment extends Fragment {
 
-
-    public Toast toast = null;
     public static final String ARGUMENT = "argument";
     public static final String DATAKEY = "datakey";
+    public static final String URL = "url";
+    public static final String IMAGE = "image";
+    public static final String TITLE = "title";
+    private News newData;
+    public Toast toast = null;
     private RecyclerView recyclerView;
     private List<InfoListData> lists = new ArrayList<>();
     private InfoDataAdapter adapter;
@@ -74,17 +79,15 @@ public class InfoTabFragment extends Fragment {
             tabDataKey = bundle.getString(DATAKEY);
             Log.e("key",tabDataKey);
         }
-        initInfomation();
     }
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.view_fragment_recycler, null);
-        recyclerView = (RecyclerView) view.findViewById(R.id.recycler_view);
+        initUI(view);
         adapter = new InfoDataAdapter(lists);
-        swipeRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.swipe_refresh);
-        swipeRefreshLayout.setColorSchemeResources(R.color.colorPrimary);
+        swipeRefreshLayout.setColorSchemeResources(R.color.colorPrimary,R.color.colorAccent,R.color.colorPrimaryDark,R.color.refresh,R.color.cardview_shadow_end_color);
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
@@ -100,7 +103,11 @@ public class InfoTabFragment extends Fragment {
         adapter.setmOnItemClickLitener(new OnItemClickLitener() {
             @Override
             public void onItemClick(View view, int position) {
-                Toast.makeText(getActivity(),"单击",Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getActivity(), DetailsNewActivity.class);
+                intent.putExtra(URL,newData.result.data.get(position).url);
+                intent.putExtra(IMAGE,newData.result.data.get(position).thumbnail_pic_s);
+                intent.putExtra(TITLE,newData.result.data.get(position).author_name);
+                startActivity(intent);
             }
 
             @Override
@@ -109,6 +116,14 @@ public class InfoTabFragment extends Fragment {
             }
         });
         return view;
+    }
+
+    /**
+     * 初始化视图
+     */
+    private void initUI(View view){
+        recyclerView = (RecyclerView) view.findViewById(R.id.recycler_view);
+        swipeRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.swipe_refresh);
     }
 
     /**
@@ -131,8 +146,8 @@ public class InfoTabFragment extends Fragment {
 
             @Override
             public void onResponse(Call call, Response response) throws IOException {
-                String data = response.body().string();
-                final News newData = Utility.handleGetNEWSResponse(data);
+                final String data = response.body().string();
+                newData = Utility.handleGetNEWSResponse(data);
                 getActivity().runOnUiThread(new Runnable() {
                     @Override
                     public void run() {

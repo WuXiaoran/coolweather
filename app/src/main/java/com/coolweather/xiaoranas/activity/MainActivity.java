@@ -4,19 +4,16 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.TabLayout;
-import android.support.v4.view.ViewPager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.MotionEvent;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.coolweather.xiaoranas.R;
-import com.coolweather.xiaoranas.adapter.InfoPagerAdapter;
-import com.coolweather.xiaoranas.entity.InfoListData;
-import com.coolweather.xiaoranas.fragment.InfoTabFragment;
-
-import java.util.ArrayList;
-import java.util.List;
+import com.coolweather.xiaoranas.fragment.MainTabFragment;
 
 /**
  * Created by Administrator on 2017/2/24.
@@ -25,22 +22,16 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
 
-
-    private String[] tabData;
-    private String[] tabKey;
+    private String[] tabData_foots;
+    private String[] tabData_foots_icon;
 
     /*
      * view
      */
     private Toolbar toolbar;
-    private ViewPager viewPager;
-    private TabLayout tabLayout;
+    private TabLayout main_tabLayout_foots;
     private CoordinatorLayout coordinatorlayout;
 
-
-    private List<InfoListData> lists = new ArrayList<>();
-    private List<InfoTabFragment> fragments;
-    private InfoPagerAdapter adapter;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -56,42 +47,30 @@ public class MainActivity extends AppCompatActivity {
     private void initUI() {
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        tabLayout = (TabLayout) findViewById(R.id.tablayout);
-        viewPager = (ViewPager) findViewById(R.id.viewpager);
         coordinatorlayout = (CoordinatorLayout) findViewById(R.id.coordinatorlayout);
-        viewPager.setOnTouchListener(new View.OnTouchListener(){
-
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                switch (event.getAction()){
-                    case MotionEvent.ACTION_MOVE:
-                        coordinatorlayout.setEnabled(false);
-                        break;
-                    case MotionEvent.ACTION_DOWN:
-                    case MotionEvent.ACTION_CANCEL:
-                        coordinatorlayout.setEnabled(true);
-                        break;
-                }
-                return false;
-            }
-        });
+        main_tabLayout_foots = (TabLayout) findViewById(R.id.main_tablayout_foots);
     }
 
     /**
      * 初始化tab数据
      */
     private void initTabData(){
-
-        tabData = getResources().getStringArray(R.array.tabarray);
-        tabKey = getResources().getStringArray(R.array.tabarraykey);
-        fragments = new ArrayList<>();
-        for (int i = 0;i < tabData.length;i++){
-            InfoTabFragment infoTabFragment = InfoTabFragment.getInstance(i + 1,tabKey[i]);
-            fragments.add(infoTabFragment);
+        tabData_foots = getResources().getStringArray(R.array.tabarray_foots);
+        tabData_foots_icon = getResources().getStringArray(R.array.tabarray_foots_icon);
+        for (int i = 0;i < tabData_foots.length;i++){
+            View tabitem = LayoutInflater.from(this).inflate(R.layout.item_maintab,null);
+            ImageView icon = (ImageView) tabitem.findViewById(R.id.maintab_icon);
+            TextView text = (TextView) tabitem.findViewById(R.id.maintab_text);
+            icon.setBackgroundResource(getResources().getIdentifier(tabData_foots_icon[i],
+                                             "drawable",
+                                              getBaseContext().getPackageName()));//通过字符串的图片名称去拿资源id
+            text.setText(tabData_foots[i]);
+            TabLayout.Tab tab = main_tabLayout_foots.newTab().setCustomView(tabitem);
+            main_tabLayout_foots.addTab(tab);
         }
-        adapter = new InfoPagerAdapter(getSupportFragmentManager(),fragments,tabData);
-        viewPager.setAdapter(adapter);
-        tabLayout.setupWithViewPager(viewPager);
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.main_fragment,new MainTabFragment());
+        transaction.commit();
     }
 
 }

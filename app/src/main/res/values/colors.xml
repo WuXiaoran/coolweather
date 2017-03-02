@@ -7,4 +7,5 @@
     <color name="view">#bdbdbd</color>
     <color name="state_pressed">#bdbdbd</color>
     <color name="false_state_pressed">#FFFFFF</color>
+    <color name="refresh">#35e232</color>
 </resources>

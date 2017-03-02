@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+        <!-- 新闻详情 -->
+        <style name="NewTheme" parent="AppTheme">
+            <item name="android:statusBarColor">@android:color/transparent</item>
+        </style>
+</resources>
