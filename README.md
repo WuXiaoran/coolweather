@@ -1,1 +1,1 @@
-# coolweather这是一个天气开源项目
+# coolweather这是一个天气与热点新闻开源项目

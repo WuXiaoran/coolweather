@@ -131,7 +131,6 @@ public class InfoTabFragment extends Fragment {
      */
     public void initInfomation() {
         String url = URLAdress.NewsUrl + tabDataKey + URLAdress.NewsKey;
-        Log.e("key",tabDataKey);
         HttpUtil.sendOkHttpRequest(url, new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
@@ -186,6 +185,14 @@ public class InfoTabFragment extends Fragment {
 
             }
         });
+    }
+
+    @Override
+    public void setMenuVisibility(boolean menuVisible) {
+        super.setMenuVisibility(menuVisible);
+        if (this.getView() != null){
+            this.getView().setVisibility(menuVisible ? View.VISIBLE : View.GONE);
+        }
     }
 }
 

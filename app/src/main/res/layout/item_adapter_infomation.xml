@@ -30,8 +30,8 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_marginLeft="10dp"
-        android:layout_marginBottom="5dp"
-        android:layout_alignBottom="@+id/item_infomation_top_image">
+        android:layout_below="@+id/item_infomation_top_image"
+        android:layout_marginBottom="5dp">
         <TextView
             android:id="@+id/item_infomation_source"
             android:layout_width="wrap_content"
